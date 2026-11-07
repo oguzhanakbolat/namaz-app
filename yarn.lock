@@ -630,6 +630,11 @@
   resolved "https://registry.yarnpkg.com/@expo-google-fonts/amiri/-/amiri-0.4.1.tgz#8507587d9efad2d70f1fc401e8088aa97ab1cab2"
   integrity sha512-JTZUZ4olyqGeXu5UBWVEerrbym/MD9U3wU8qzSg8z4qEtHFKAI3uPg2DuytfeRmJ6EppaHLYsYqpGerMOrpJeA==
 
+"@expo-google-fonts/scheherazade-new@^0.4.3":
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/scheherazade-new/-/scheherazade-new-0.4.3.tgz#5ca5b8287a373ff9f13bd0883169073ab49a36d8"
+  integrity sha512-22XxEdPlhZTdeCJEvcKB9MUrSIxQa0cL4yYFqNIuxgIPzkn0xX3aO/OGl5kYT1gaQn8dVsyeWJlBX0IzQk56Iw==
+
 "@expo/cli@^58.1.19":
   version "58.1.19"
   resolved "https://registry.yarnpkg.com/@expo/cli/-/cli-58.1.19.tgz#e2197d8481be45306ae9bb5721a82a7fa3419fea"

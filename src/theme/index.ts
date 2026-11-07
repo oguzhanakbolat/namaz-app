@@ -55,7 +55,19 @@ export function useTheme(): Theme {
 export const radius = { sm: 10, md: 16, lg: 24, pill: 999 };
 export const space = (n: number) => n * 4;
 
+/** Arapça metin yazı tipi: Scheherazade New (SIL, Google Fonts) — _layout.tsx içinde yüklenir */
 export const fonts = {
-  arabic: 'Amiri_400Regular',
-  arabicBold: 'Amiri_700Bold',
+  arabic: 'ScheherazadeNew_400Regular',
+  arabicBold: 'ScheherazadeNew_700Bold',
+};
+
+/**
+ * Arapça metin boyutları.
+ * size / lineHeight: ayet, hadis   ·   compactSize / compactLineHeight: esma (yan yana düzen)
+ */
+export const arabicText = {
+  size: 26,
+  lineHeight: 56,
+  compactSize: 38,
+  compactLineHeight: 78,
 };

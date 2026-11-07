@@ -1,4 +1,4 @@
-import { Amiri_400Regular, Amiri_700Bold, useFonts } from '@expo-google-fonts/amiri';
+import { ScheherazadeNew_400Regular, ScheherazadeNew_700Bold, useFonts } from '@expo-google-fonts/scheherazade-new';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
@@ -8,7 +8,8 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 SplashScreen.preventAutoHideAsync().catch(() => {});
 
 export default function RootLayout() {
-  const [loaded, error] = useFonts({ Amiri_400Regular, Amiri_700Bold });
+  // Arapça metin yazı tipi (bkz. src/theme/index.ts)
+  const [loaded, error] = useFonts({ ScheherazadeNew_400Regular, ScheherazadeNew_700Bold });
 
   useEffect(() => {
     if (loaded || error) SplashScreen.hideAsync().catch(() => {});

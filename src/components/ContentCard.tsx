@@ -3,7 +3,7 @@ import { Image } from 'expo-image';
 import { StyleSheet, Text, View } from 'react-native';
 
 import type { ContentBlock, Media } from '@/lib/types';
-import { fonts, radius, space, useTheme } from '@/theme';
+import { arabicText, fonts, radius, space, useTheme } from '@/theme';
 import { AudioButton } from './AudioButton';
 import { RichText } from './RichText';
 
@@ -45,7 +45,7 @@ function ArabicVisual({ image, text, compact }: { image: Media | null; text: str
       style={[
         styles.arabic,
         { color: t.paperText, fontFamily: fonts.arabic },
-        compact && { fontSize: 34, lineHeight: 58, minWidth: 96 },
+        compact && { fontSize: arabicText.compactSize, lineHeight: arabicText.compactLineHeight, minWidth: 96 },
       ]}
     >
       {text}
@@ -127,7 +127,12 @@ const styles = StyleSheet.create({
   section: { fontSize: 16, fontWeight: '700' },
   subtitle: { fontSize: 13, marginTop: 1 },
   arabicBox: { borderRadius: radius.md, paddingVertical: space(3), paddingHorizontal: space(3), alignItems: 'center' },
-  arabic: { fontSize: 24, lineHeight: 46, textAlign: 'center', writingDirection: 'rtl' },
+  arabic: {
+    fontSize: arabicText.size,
+    lineHeight: arabicText.lineHeight,
+    textAlign: 'center',
+    writingDirection: 'rtl',
+  },
   translit: { fontSize: 13.5, fontStyle: 'italic' },
   body: { fontSize: 15, lineHeight: 22 },
   sideRow: { flexDirection: 'row', gap: space(3), alignItems: 'center' },
