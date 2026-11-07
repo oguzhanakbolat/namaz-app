@@ -1,5 +1,6 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { useMemo, useState } from 'react';
+import { router } from 'expo-router';
+import { useEffect, useMemo, useState } from 'react';
 import { ActivityIndicator, Pressable, RefreshControl, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -11,11 +12,14 @@ import { PrayerStrip } from '@/components/PrayerStrip';
 import { useContents, useNow, usePrayerTimes, useSavedLocation } from '@/hooks/useAppData';
 import { gregorianLong } from '@/lib/format';
 import { cityToday, prayerState, stripFor } from '@/lib/prayer';
+import { useSettings } from '@/lib/settings';
 import { radius, space, useTheme } from '@/theme';
+import { syncWidgets } from '@/widgets/sync';
 
 export default function HomeScreen() {
   const t = useTheme();
   const { location, ready, save } = useSavedLocation();
+  const { settings } = useSettings();
   const [pickerOpen, setPickerOpen] = useState(false);
   const times = usePrayerTimes(location?.cityId ?? null);
   const contents = useContents();
@@ -25,6 +29,13 @@ export default function HomeScreen() {
   const todayStr = cityToday(now, times.data?.[0]?.gmtOffset ?? 3);
   const today = state?.today ?? times.data?.find((d) => d.date === todayStr) ?? null;
   const strip = useMemo(() => (today ? stripFor(today) : []), [today]);
+
+  // Ana ekran widget'larını güncelle: vakitler/konum/widget ayarları değişince ve uygulama açıkken her vakit girişinde
+  const currentKey = state?.current ?? null;
+  useEffect(() => {
+    if (!ready) return;
+    syncWidgets(times.data, location?.cityName, settings.widget);
+  }, [ready, times.data, location?.cityName, currentKey, settings.widget]);
 
   const locationLabel = location ? `${location.stateName} / ${location.cityName}` : 'Konum seçin';
   const refreshing = times.loading || contents.loading;
@@ -46,6 +57,7 @@ export default function HomeScreen() {
           hijri={today?.hijriDateLong ?? null}
           locationLabel={locationLabel}
           onPressLocation={() => setPickerOpen(true)}
+          onPressSettings={() => router.push('/settings')}
         />
 
         {!location && ready ? (

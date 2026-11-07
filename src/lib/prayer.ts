@@ -128,8 +128,14 @@ export function prayerState(days: DayTimes[], now: number): PrayerState | null {
 
   let idx = -1;
   for (let i = 0; i < events.length; i += 1) if (events[i].at <= now) idx = i;
-  const cur = events[idx];
+  let cur = events[idx];
   const nxt = events[idx + 1];
+  // Gece yarısından sonra, imsaktan önce: dünün yatsısı sürüyor. Önbellekte dün yoksa
+  // bugünün yatsı saatinden tahmin et (iki gün arası fark birkaç dakikadır).
+  if (!cur && nxt) {
+    const time = String(today.isha);
+    cur = { key: 'yatsi', at: toEpoch(addDays(todayStr, -1), time, offsetOf(today)), time };
+  }
   if (!cur || !nxt) return null;
 
   const span = nxt.at - cur.at;

@@ -43,7 +43,8 @@ export const api = {
     get<{ data: Place[] }>(`/api/namaz/countries/${countryId}/states`, { fresh: true }).then((r) => r.data),
   cities: (stateId: number) =>
     get<{ data: Place[] }>(`/api/namaz/states/${stateId}/cities`, { fresh: true }).then((r) => r.data),
-  times: (cityId: number, days: number) =>
-    get<TimesResponse>(`/api/namaz/cities/${cityId}/times?days=${days}`, { timeoutMs: 30000 }),
+  /** from: YYYY-MM-DD (dünü de isteyin: gece yarısından sonra dünün yatsısı gerekir) */
+  times: (cityId: number, days: number, from: string) =>
+    get<TimesResponse>(`/api/namaz/cities/${cityId}/times?from=${from}&days=${days}`, { timeoutMs: 30000 }),
   contents: () => get<{ data: ContentBlock[] }>('/api/namaz/contents').then((r) => r.data),
 };

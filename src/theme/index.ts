@@ -1,5 +1,7 @@
 import { useColorScheme } from 'react-native';
 
+import { useOptionalSettings } from '@/lib/settings';
+
 /** Açık ve koyu tema renkleri */
 const light = {
   background: '#F4F2EC',
@@ -48,8 +50,16 @@ const dark: typeof light = {
 
 export type Theme = typeof light;
 
+/** Uygulamanın o anki teması: Ayarlar'daki seçim, "Sistem" ise telefonun teması */
+export function useColorMode(): 'light' | 'dark' {
+  const system = useColorScheme();
+  const mode = useOptionalSettings()?.settings.themeMode ?? 'system';
+  if (mode === 'light' || mode === 'dark') return mode;
+  return system === 'dark' ? 'dark' : 'light';
+}
+
 export function useTheme(): Theme {
-  return useColorScheme() === 'dark' ? dark : light;
+  return useColorMode() === 'dark' ? dark : light;
 }
 
 export const radius = { sm: 10, md: 16, lg: 24, pill: 999 };

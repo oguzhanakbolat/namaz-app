@@ -35,7 +35,109 @@
       ],
       "expo-font",
       "expo-status-bar",
-      "expo-splash-screen"
+      "expo-splash-screen",
+      "expo-background-task",
+      [
+        "expo-widgets",
+        {
+          "bundleIdentifier": "net.akbolat.namazvakti.widgets",
+          "groupIdentifier": "group.net.akbolat.namazvakti",
+          "enableAndroid": true,
+          "widgets": [
+            {
+              "name": "NextPrayer",
+              "displayName": "Sıradaki Vakit",
+              "description": "Sıradaki vakte kalan süre",
+              "ios": {
+                "supportedFamilies": ["systemSmall", "accessoryRectangular", "accessoryInline"],
+                "initialLayout": "./src/widgets/ios/NextPrayer.tsx"
+              },
+              "android": {
+                "minWidth": 110,
+                "minHeight": 110,
+                "targetCellWidth": 2,
+                "targetCellHeight": 2,
+                "resizeMode": "both",
+                "initialLayout": "./src/widgets/android/NextPrayer.tsx"
+              }
+            },
+            {
+              "name": "NextPrayerMini",
+              "displayName": "Sıradaki Vakit (Mini)",
+              "description": "Şeffaf: yalnızca sıradaki vakit ve saati",
+              "ios": {
+                "supportedFamilies": ["systemSmall", "accessoryCircular"],
+                "initialLayout": "./src/widgets/ios/NextPrayerMini.tsx"
+              },
+              "android": {
+                "minWidth": 40,
+                "minHeight": 40,
+                "targetCellWidth": 1,
+                "targetCellHeight": 1,
+                "resizeMode": "both",
+                "initialLayout": "./src/widgets/android/NextPrayerMini.tsx"
+              }
+            },
+            {
+              "name": "DailyTimes",
+              "displayName": "Günün Vakitleri",
+              "description": "Günün tüm vakitleri, şu anki vakit vurgulu",
+              "ios": {
+                "supportedFamilies": ["systemSmall"],
+                "initialLayout": "./src/widgets/ios/DailyTimes.tsx"
+              },
+              "android": {
+                "minWidth": 110,
+                "minHeight": 110,
+                "targetCellWidth": 2,
+                "targetCellHeight": 2,
+                "resizeMode": "both",
+                "initialLayout": "./src/widgets/android/DailyTimes.tsx"
+              }
+            },
+            {
+              "name": "PrayerPanel",
+              "displayName": "Vakit Paneli",
+              "description": "Sıradaki vakit ve günün vakitleri",
+              "ios": {
+                "supportedFamilies": ["systemMedium"],
+                "initialLayout": "./src/widgets/ios/PrayerPanel.tsx"
+              },
+              "android": {
+                "minWidth": 250,
+                "minHeight": 110,
+                "targetCellWidth": 3,
+                "targetCellHeight": 2,
+                "resizeMode": "both",
+                "initialLayout": "./src/widgets/android/PrayerPanel.tsx"
+              }
+            },
+            {
+              "name": "PrayerStrip",
+              "displayName": "Vakit Şeridi",
+              "description": "Tüm vakitler tek satırda, şu anki vakit vurgulu",
+              "ios": {
+                "supportedFamilies": ["systemMedium"],
+                "initialLayout": "./src/widgets/ios/PrayerStrip.tsx"
+              },
+              "android": {
+                "minWidth": 250,
+                "minHeight": 50,
+                "targetCellWidth": 4,
+                "targetCellHeight": 1,
+                "resizeMode": "horizontal",
+                "initialLayout": "./src/widgets/android/PrayerStrip.tsx"
+              }
+            }
+          ]
+        }
+      ],
+      [
+        "./plugins/withWidgetPreviews",
+        {
+          "dir": "./assets/widget-previews"
+        }
+      ]
     ],
     "scheme": "namazvakti",
     "experiments": {

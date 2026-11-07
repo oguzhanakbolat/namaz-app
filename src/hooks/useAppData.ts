@@ -86,7 +86,8 @@ export function usePrayerTimes(cityId: number | null) {
 
       setState((s) => ({ ...s, loading: true, error: null }));
       try {
-        const res = await api.times(cityId, TIMES_CACHE_DAYS);
+        // Dünden başla: gece yarısı ile imsak arasında geri sayım dünün yatsısından hesaplanır
+        const res = await api.times(cityId, TIMES_CACHE_DAYS + 1, addDays(today, -1));
         const entry: Cached<DayTimes[]> = { savedAt: Date.now(), data: res.data };
         await storage.set(KEYS.times(cityId), entry);
         setState({ cityId, data: res.data, loading: false, error: null, updatedAt: entry.savedAt });

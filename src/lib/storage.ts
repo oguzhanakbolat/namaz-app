@@ -23,6 +23,7 @@ export const KEYS = {
   location: 'location:v1',
   times: (cityId: number) => `times:v1:${cityId}`,
   contents: 'contents:v1',
+  settings: 'settings:v1',
 };
 
 /** Önbellek kaydı: veri + kaydedilme zamanı */
