@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Vakit Paneli (3-4x2): solda sıradaki vakit ve canlı geri sayım, sağda günün vakitleri -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/nw_root"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <ImageView
+    android:id="@+id/nw_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scaleType="fitXY"
+    android:src="@drawable/nw_round_20"
+    android:importantForAccessibility="no" />
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="8dp">
+
+    <FrameLayout
+      android:layout_width="0dp"
+      android:layout_height="match_parent"
+      android:layout_weight="10">
+
+      <ImageView
+        android:id="@+id/nw_hero_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/nw_round_inner"
+        android:importantForAccessibility="no" />
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <TextView
+          android:id="@+id/nw_city"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:ellipsize="end"
+          android:maxLines="1"
+          android:text="Namaz Vakti"
+          android:textColor="#D5E4E0"
+          android:textSize="14sp" />
+
+        <FrameLayout
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:layout_weight="1" />
+
+        <TextView
+          android:id="@+id/nw_title"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:ellipsize="end"
+          android:maxLines="2"
+          android:text="@string/nw_empty"
+          android:textColor="#FFFFFF"
+          android:textSize="17sp"
+          android:textStyle="bold" />
+
+        <Chronometer
+          android:id="@+id/nw_timer"
+          android:layout_width="match_parent"
+          android:layout_height="46dp"
+          android:autoSizeMaxTextSize="38sp"
+          android:autoSizeMinTextSize="14sp"
+          android:autoSizeStepGranularity="1sp"
+          android:autoSizeTextType="uniform"
+          android:gravity="start|center_vertical"
+          android:includeFontPadding="false"
+          android:maxLines="1"
+          android:textColor="#F2C66D"
+          android:textSize="24sp"
+          android:textStyle="bold"
+          android:visibility="gone" />
+
+        <TextView
+          android:id="@+id/nw_sub"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:ellipsize="end"
+          android:maxLines="1"
+          android:textColor="#D5E4E0"
+          android:textSize="12sp"
+          android:visibility="gone" />
+      </LinearLayout>
+    </FrameLayout>
+
+    <FrameLayout
+      android:layout_width="0dp"
+      android:layout_height="match_parent"
+      android:layout_weight="11"
+      android:paddingStart="6dp">
+
+      <LinearLayout
+        android:id="@+id/nw_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" />
+    </FrameLayout>
+  </LinearLayout>
+</FrameLayout>

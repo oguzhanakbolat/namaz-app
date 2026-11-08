@@ -12,11 +12,14 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { radius, space, useTheme } from '@/theme';
 
+/** Türkçe büyük harf (i → İ). textTransform: 'uppercase' Türkçe kuralını uygulamıyor ("VAKIT GIRINCE"). */
+const upperTr = (s: string) => s.replace(/i/g, 'İ').replace(/ı/g, 'I').toUpperCase();
+
 export function SettingsSection({ title, footer, children }: { title?: string; footer?: string; children: ReactNode }) {
   const t = useTheme();
   return (
     <View style={styles.section}>
-      {title && <Text style={[styles.sectionTitle, { color: t.textMuted }]}>{title}</Text>}
+      {title && <Text style={[styles.sectionTitle, { color: t.textMuted }]}>{upperTr(title)}</Text>}
       <View style={[styles.card, { backgroundColor: t.surface, borderColor: t.border }]}>{children}</View>
       {footer && <Text style={[styles.footer, { color: t.textSoft }]}>{footer}</Text>}
     </View>
@@ -160,7 +163,6 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: '700',
     letterSpacing: 0.5,
-    textTransform: 'uppercase',
     marginLeft: space(1),
   },
   card: { borderRadius: radius.lg, borderWidth: StyleSheet.hairlineWidth, overflow: 'hidden' },

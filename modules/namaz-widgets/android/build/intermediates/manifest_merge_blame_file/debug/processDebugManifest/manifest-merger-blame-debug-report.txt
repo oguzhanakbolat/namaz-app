@@ -1,0 +1,180 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="net.akbolat.namazwidgets" >
+4
+5    <uses-sdk android:minSdkVersion="24" />
+5-->INJECTED
+5-->INJECTED
+6
+7    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+7-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:2:3-79
+7-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:2:20-76
+8
+9    <application>
+9-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:4:3-58:17
+10        <receiver
+10-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:5:5-10:16
+11            android:name="net.akbolat.namazwidgets.NextPrayerWidget"
+11-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:5:15-71
+12            android:exported="false"
+12-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:5:72-96
+13            android:label="@string/nw_name_next" >
+13-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:5:97-133
+14            <intent-filter>
+14-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:6:7-8:23
+15                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+15-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:7:9-76
+15-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:7:17-73
+16            </intent-filter>
+17
+18            <meta-data
+18-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:9:7-106
+19                android:name="android.appwidget.provider"
+19-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:9:18-59
+20                android:resource="@xml/nw_next_prayer_info" />
+20-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:9:60-103
+21        </receiver>
+22        <receiver
+22-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:12:5-17:16
+23            android:name="net.akbolat.namazwidgets.NextPrayerMiniWidget"
+23-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:12:15-75
+24            android:exported="false"
+24-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:12:76-100
+25            android:label="@string/nw_name_mini" >
+25-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:12:101-137
+26            <intent-filter>
+26-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:6:7-8:23
+27                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+27-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:7:9-76
+27-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:7:17-73
+28            </intent-filter>
+29
+30            <meta-data
+30-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:9:7-106
+31                android:name="android.appwidget.provider"
+31-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:9:18-59
+32                android:resource="@xml/nw_next_prayer_mini_info" />
+32-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:9:60-103
+33        </receiver>
+34        <receiver
+34-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:19:5-24:16
+35            android:name="net.akbolat.namazwidgets.DailyTimesWidget"
+35-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:19:15-71
+36            android:exported="false"
+36-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:19:72-96
+37            android:label="@string/nw_name_daily" >
+37-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:19:97-134
+38            <intent-filter>
+38-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:6:7-8:23
+39                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+39-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:7:9-76
+39-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:7:17-73
+40            </intent-filter>
+41
+42            <meta-data
+42-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:9:7-106
+43                android:name="android.appwidget.provider"
+43-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:9:18-59
+44                android:resource="@xml/nw_daily_times_info" />
+44-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:9:60-103
+45        </receiver>
+46        <receiver
+46-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:26:5-31:16
+47            android:name="net.akbolat.namazwidgets.PrayerPanelWidget"
+47-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:26:15-72
+48            android:exported="false"
+48-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:26:73-97
+49            android:label="@string/nw_name_panel" >
+49-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:26:98-135
+50            <intent-filter>
+50-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:6:7-8:23
+51                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+51-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:7:9-76
+51-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:7:17-73
+52            </intent-filter>
+53
+54            <meta-data
+54-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:9:7-106
+55                android:name="android.appwidget.provider"
+55-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:9:18-59
+56                android:resource="@xml/nw_prayer_panel_info" />
+56-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:9:60-103
+57        </receiver>
+58        <receiver
+58-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:33:5-38:16
+59            android:name="net.akbolat.namazwidgets.PrayerStripWidget"
+59-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:33:15-72
+60            android:exported="false"
+60-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:33:73-97
+61            android:label="@string/nw_name_strip" >
+61-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:33:98-135
+62            <intent-filter>
+62-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:6:7-8:23
+63                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+63-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:7:9-76
+63-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:7:17-73
+64            </intent-filter>
+65
+66            <meta-data
+66-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:9:7-106
+67                android:name="android.appwidget.provider"
+67-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:9:18-59
+68                android:resource="@xml/nw_prayer_strip_info" />
+68-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:9:60-103
+69        </receiver>
+70        <receiver
+70-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:40:5-45:16
+71            android:name="net.akbolat.namazwidgets.PrayerCardWidget"
+71-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:40:15-71
+72            android:exported="false"
+72-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:40:72-96
+73            android:label="@string/nw_name_card" >
+73-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:40:97-133
+74            <intent-filter>
+74-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:6:7-8:23
+75                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+75-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:7:9-76
+75-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:7:17-73
+76            </intent-filter>
+77
+78            <meta-data
+78-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:9:7-106
+79                android:name="android.appwidget.provider"
+79-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:9:18-59
+80                android:resource="@xml/nw_prayer_card_info" />
+80-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:9:60-103
+81        </receiver>
+82        <receiver
+82-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:47:5-57:16
+83            android:name="net.akbolat.namazwidgets.WidgetUpdateReceiver"
+83-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:47:15-75
+84            android:exported="false" >
+84-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:47:76-100
+85            <intent-filter>
+85-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:48:7-56:23
+86                <action android:name="net.akbolat.namazwidgets.TICK" />
+86-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:49:9-64
+86-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:49:17-61
+87                <action android:name="net.akbolat.namazwidgets.MINUTE" />
+87-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:50:9-66
+87-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:50:17-63
+88                <action android:name="android.intent.action.BOOT_COMPLETED" />
+88-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:51:9-71
+88-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:51:17-68
+89                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+89-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:52:9-76
+89-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:52:17-73
+90                <action android:name="android.intent.action.TIME_SET" />
+90-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:53:9-65
+90-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:53:17-62
+91                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+91-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:54:9-73
+91-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:54:17-70
+92                <action android:name="android.app.action.SCHEDULE_EXACT_ALARM_PERMISSION_STATE_CHANGED" />
+92-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:55:9-99
+92-->/Users/akbolat/Projects/namaz-app/modules/namaz-widgets/android/src/main/AndroidManifest.xml:55:17-96
+93            </intent-filter>
+94        </receiver>
+95    </application>
+96
+97</manifest>

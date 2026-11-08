@@ -2,17 +2,18 @@
  * Ana ekran widget'larını günceller.
  *  - iOS: ~10 günlük zaman çizelgesi gönderilir; widget her vakit girişinde kendiliğinden yenilenir,
  *    geri sayımı sistem işletir.
- *  - Android: zaman çizelgesi desteklenmediği için o anki içerik gönderilir (uygulama açıkken her vakit
- *    değişiminde ve arka plan göreviyle).
+ *  - Android: yerel native modül (modules/namaz-widgets, bkz. ./android.ts). Vakitler bir kez gönderilir;
+ *    geri sayımı ve vakit geçişlerini widget kendisi işletir.
  *
- * expo-widgets Expo Go'da yoktur; modül bulunmazsa sessizce hiçbir şey yapılmaz.
+ * expo-widgets / native modül Expo Go'da yoktur; bulunmazsa sessizce hiçbir şey yapılmaz.
  */
 import { requireOptionalNativeModule } from 'expo';
 import { Platform } from 'react-native';
 
 import type { DayTimes } from '@/lib/types';
 import type { AppSettings } from '@/lib/settings';
-import { buildPalettes, buildTimeline, EMPTY_WIDGET_PROPS, propsAt, type WidgetProps } from './data';
+import { androidWidgetsAvailable, syncAndroidWidgets } from './android';
+import { buildPalettes, buildTimeline, EMPTY_WIDGET_PROPS, type WidgetProps } from './data';
 
 type AnyWidget = {
   updateTimeline(entries: { date: Date; props: WidgetProps }[]): void;
@@ -24,7 +25,8 @@ let cached: AnyWidget[] | null = null;
 function loadWidgets(): AnyWidget[] {
   if (cached) return cached;
   cached = [];
-  if (Platform.OS === 'web' || !requireOptionalNativeModule('ExpoWidgets')) return cached;
+  // Android widget'ları expo-widgets ile değil, yerel native modülle çalışır
+  if (Platform.OS !== 'ios' || !requireOptionalNativeModule('ExpoWidgets')) return cached;
   try {
     // Platforma göre ./registry.ios.ts veya ./registry.android.ts yüklenir
     // eslint-disable-next-line @typescript-eslint/no-require-imports
@@ -36,7 +38,7 @@ function loadWidgets(): AnyWidget[] {
 }
 
 export function widgetsAvailable() {
-  return loadWidgets().length > 0;
+  return Platform.OS === 'android' ? androidWidgetsAvailable() : loadWidgets().length > 0;
 }
 
 /**
@@ -48,6 +50,11 @@ export function syncWidgets(
   city: string | null | undefined,
   widgetSettings?: AppSettings['widget']
 ) {
+  if (Platform.OS === 'android') {
+    syncAndroidWidgets(days, city, buildPalettes(widgetSettings));
+    return;
+  }
+
   const widgets = loadWidgets();
   if (!widgets.length) return;
 
@@ -59,14 +66,9 @@ export function syncWidgets(
       widgets.forEach((w) => w.updateSnapshot(empty));
       return;
     }
-    if (Platform.OS === 'ios') {
-      const entries = buildTimeline(days, city, now, palette);
-      if (entries.length) widgets.forEach((w) => w.updateTimeline(entries));
-      else widgets.forEach((w) => w.updateSnapshot(empty));
-    } else {
-      const props = propsAt(days, city, now, palette) ?? empty;
-      widgets.forEach((w) => w.updateSnapshot(props));
-    }
+    const entries = buildTimeline(days, city, now, palette);
+    if (entries.length) widgets.forEach((w) => w.updateTimeline(entries));
+    else widgets.forEach((w) => w.updateSnapshot(empty));
   } catch (e) {
     console.warn('[widget] güncellenemedi', e);
   }

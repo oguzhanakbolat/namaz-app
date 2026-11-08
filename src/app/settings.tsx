@@ -10,7 +10,9 @@ import { useMemo, useState } from 'react';
 import { Platform, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { AlarmSettings } from '@/components/settings/AlarmSettings';
 import { Segmented, SettingsRow, SettingsSection, Swatches } from '@/components/settings/SettingsUI';
+import { UpdateRow } from '@/components/settings/UpdateRow';
 import { WidgetPreview } from '@/components/settings/WidgetPreview';
 import { useSettings, type ThemeMode, type WidgetAccent, type WidgetTextColor, type WidgetTheme } from '@/lib/settings';
 import { space, useTheme } from '@/theme';
@@ -74,6 +76,8 @@ export default function SettingsScreen() {
           </SettingsRow>
         </SettingsSection>
 
+        <AlarmSettings />
+
         <SettingsSection
           title="Widget'lar"
           footer={
@@ -128,10 +132,15 @@ export default function SettingsScreen() {
 
         <SettingsSection title="Hakkında">
           <SettingsRow label="Sürüm" stacked={false} first>
-            <Text style={[styles.value, { color: t.textMuted }]}>{Constants.expoConfig?.version ?? '-'}</Text>
+            <Text style={[styles.value, { color: t.textMuted }]}>
+              {Constants.expoConfig?.version ? Constants.expoConfig?.version + '-01' : '01'}
+            </Text>
           </SettingsRow>
+          <UpdateRow />
           <SettingsRow label="Vakitler" stacked={false}>
-            <Text style={[styles.value, { color: t.textMuted }]}>Diyanet İşleri Başkanlığı</Text>
+            <Text style={[styles.value, { color: t.textMuted }]}>
+              Diyanet İşleri Başkanlığı Namaz Vakitlerinden Alınmıştır.
+            </Text>
           </SettingsRow>
         </SettingsSection>
       </ScrollView>

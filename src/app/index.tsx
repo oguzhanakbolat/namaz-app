@@ -10,6 +10,7 @@ import { Header } from '@/components/Header';
 import { LocationPicker } from '@/components/LocationPicker';
 import { PrayerStrip } from '@/components/PrayerStrip';
 import { useContents, useNow, usePrayerTimes, useSavedLocation } from '@/hooks/useAppData';
+import { syncAlarms } from '@/lib/alarms';
 import { gregorianLong } from '@/lib/format';
 import { cityToday, prayerState, stripFor } from '@/lib/prayer';
 import { useSettings } from '@/lib/settings';
@@ -36,6 +37,12 @@ export default function HomeScreen() {
     if (!ready) return;
     syncWidgets(times.data, location?.cityName, settings.widget);
   }, [ready, times.data, location?.cityName, currentKey, settings.widget]);
+
+  // Vakit alarmlarını kur: vakitler/konum/alarm ayarları değişince ve her vakit girişinde (geçmiş alarmlar düşer, yenileri eklenir)
+  useEffect(() => {
+    if (!ready) return;
+    syncAlarms(times.data, location?.cityName, settings.alarms);
+  }, [ready, times.data, location?.cityName, currentKey, settings.alarms]);
 
   const locationLabel = location ? `${location.stateName} / ${location.cityName}` : 'Konum seçin';
   const refreshing = times.loading || contents.loading;
@@ -82,7 +89,7 @@ export default function HomeScreen() {
 
         {times.updatedAt && (
           <Text style={[styles.footer, { color: t.textSoft }]}>
-            Kaynak: Diyanet İşleri Başkanlığı · Güncelleme: {gregorianLong(cityToday(times.updatedAt))}
+            Güncelleme: {gregorianLong(cityToday(times.updatedAt))}
           </Text>
         )}
       </ScrollView>

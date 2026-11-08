@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Vakit Şeridi (4x1): altı vakit yan yana, eşit genişlikte; şu anki vurgulu -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/nw_root"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <ImageView
+    android:id="@+id/nw_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scaleType="fitXY"
+    android:src="@drawable/nw_round_20"
+    android:importantForAccessibility="no" />
+
+  <LinearLayout
+    android:id="@+id/nw_list"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="4dp" />
+
+  <TextView
+    android:id="@+id/nw_empty"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:text="@string/nw_empty"
+    android:textColor="#6B736F"
+    android:textSize="13sp"
+    android:visibility="gone" />
+</FrameLayout>

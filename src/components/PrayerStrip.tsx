@@ -8,6 +8,7 @@ type Props = { items: StripItem[]; current: PrayerKey | null };
 /** Günün vakitleri. Mevcut vakit vurgulanır. */
 export function PrayerStrip({ items, current }: Props) {
   const t = useTheme();
+  // Vurgulu hücre hero kartıyla aynı koyu ton: beyaz yazı iki temada da okunur.
   // "Sabah" ayrı bir vakit sınırı değildir; imsak vaktindeyken sabah da vurgulanmaz
   return (
     <View style={[styles.wrap, { backgroundColor: t.surface, borderColor: t.border }]}>
@@ -16,7 +17,7 @@ export function PrayerStrip({ items, current }: Props) {
         return (
           <View
             key={it.key}
-            style={[styles.cell, active && { backgroundColor: t.primary }]}
+            style={[styles.cell, active && { backgroundColor: t.heroFrom }]}
             accessibilityLabel={`${it.label} ${it.time}${active ? ', şu anki vakit' : ''}`}
           >
             <Text style={[styles.label, { color: active ? t.heroMuted : t.textMuted }]} numberOfLines={1}>

@@ -8,17 +8,32 @@
     "userInterfaceStyle": "automatic",
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "net.akbolat.namazvakti"
+      "bundleIdentifier": "net.oguzhan.namazvakti",
+      "icon": {
+        "light": "./assets/icon.png",
+        "dark": "./assets/icon-dark.png",
+        "tinted": "./assets/icon-tinted.png"
+      },
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#E8F2F5",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "net.akbolat.namazvakti"
+      "package": "net.oguzhan.namazvakti",
+      "permissions": [
+        "android.permission.SCHEDULE_EXACT_ALARM",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS",
+        "android.permission.FOREGROUND_SERVICE",
+        "android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png",
@@ -35,14 +50,45 @@
       ],
       "expo-font",
       "expo-status-bar",
-      "expo-splash-screen",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#011226",
+          "android": {
+            "image": "./assets/splash-blank.png",
+            "imageWidth": 1,
+            "backgroundColor": "#011226",
+            "dark": {
+              "image": "./assets/splash-blank.png",
+              "backgroundColor": "#011226"
+            }
+          },
+          "ios": {
+            "image": "./assets/splash.jpg",
+            "resizeMode": "cover",
+            "enableFullScreenImage_legacy": true,
+            "backgroundColor": "#011226",
+            "dark": {
+              "image": "./assets/splash.jpg",
+              "backgroundColor": "#011226"
+            }
+          }
+        }
+      ],
       "expo-background-task",
+      [
+        "expo-notifications",
+        {
+          "color": "#0D7A9A",
+          "sounds": ["./assets/sounds/vakit_cani.wav"]
+        }
+      ],
       [
         "expo-widgets",
         {
-          "bundleIdentifier": "net.akbolat.namazvakti.widgets",
-          "groupIdentifier": "group.net.akbolat.namazvakti",
-          "enableAndroid": true,
+          "bundleIdentifier": "net.oguzhan.namazvakti.widgets",
+          "groupIdentifier": "group.net.oguzhan.namazvakti",
+          "enableAndroid": false,
           "widgets": [
             {
               "name": "NextPrayer",
@@ -51,14 +97,6 @@
               "ios": {
                 "supportedFamilies": ["systemSmall", "accessoryRectangular", "accessoryInline"],
                 "initialLayout": "./src/widgets/ios/NextPrayer.tsx"
-              },
-              "android": {
-                "minWidth": 110,
-                "minHeight": 110,
-                "targetCellWidth": 2,
-                "targetCellHeight": 2,
-                "resizeMode": "both",
-                "initialLayout": "./src/widgets/android/NextPrayer.tsx"
               }
             },
             {
@@ -68,14 +106,6 @@
               "ios": {
                 "supportedFamilies": ["systemSmall", "accessoryCircular"],
                 "initialLayout": "./src/widgets/ios/NextPrayerMini.tsx"
-              },
-              "android": {
-                "minWidth": 40,
-                "minHeight": 40,
-                "targetCellWidth": 1,
-                "targetCellHeight": 1,
-                "resizeMode": "both",
-                "initialLayout": "./src/widgets/android/NextPrayerMini.tsx"
               }
             },
             {
@@ -85,14 +115,6 @@
               "ios": {
                 "supportedFamilies": ["systemSmall"],
                 "initialLayout": "./src/widgets/ios/DailyTimes.tsx"
-              },
-              "android": {
-                "minWidth": 110,
-                "minHeight": 110,
-                "targetCellWidth": 2,
-                "targetCellHeight": 2,
-                "resizeMode": "both",
-                "initialLayout": "./src/widgets/android/DailyTimes.tsx"
               }
             },
             {
@@ -102,14 +124,6 @@
               "ios": {
                 "supportedFamilies": ["systemMedium"],
                 "initialLayout": "./src/widgets/ios/PrayerPanel.tsx"
-              },
-              "android": {
-                "minWidth": 250,
-                "minHeight": 110,
-                "targetCellWidth": 3,
-                "targetCellHeight": 2,
-                "resizeMode": "both",
-                "initialLayout": "./src/widgets/android/PrayerPanel.tsx"
               }
             },
             {
@@ -119,29 +133,50 @@
               "ios": {
                 "supportedFamilies": ["systemMedium"],
                 "initialLayout": "./src/widgets/ios/PrayerStrip.tsx"
-              },
-              "android": {
-                "minWidth": 250,
-                "minHeight": 50,
-                "targetCellWidth": 4,
-                "targetCellHeight": 1,
-                "resizeMode": "horizontal",
-                "initialLayout": "./src/widgets/android/PrayerStrip.tsx"
               }
             }
           ]
-        }
-      ],
-      [
-        "./plugins/withWidgetPreviews",
-        {
-          "dir": "./assets/widget-previews"
         }
       ]
     ],
     "scheme": "namazvakti",
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "runtimeVersion": {
+      "policy": "fingerprint"
+    },
+    "updates": {
+      "enabled": true,
+      "checkAutomatically": "ON_LOAD",
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/005f2b8c-38ed-4503-a954-b0b7435bfb35"
+    },
+    "extra": {
+      "router": {
+        "asyncRoutes": {
+          "web": true
+        }
+      },
+      "eas": {
+        "build": {
+          "experimental": {
+            "ios": {
+              "appExtensions": [
+                {
+                  "targetName": "ExpoWidgetsTarget",
+                  "bundleIdentifier": "net.oguzhan.namazvakti.widgets",
+                  "entitlements": {
+                    "com.apple.security.application-groups": ["group.net.oguzhan.namazvakti"]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "projectId": "005f2b8c-38ed-4503-a954-b0b7435bfb35"
+      }
+    },
+    "owner": "oguzhan"
   }
 }

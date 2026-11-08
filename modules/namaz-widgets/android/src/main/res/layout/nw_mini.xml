@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Mini (1x1, şeffaf): "Akşama" ve vaktin saati -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/nw_root"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="2dp">
+
+    <TextView
+      android:id="@+id/nw_title"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:ellipsize="end"
+      android:gravity="center"
+      android:maxLines="1"
+      android:shadowColor="#D9000000"
+      android:shadowDy="1"
+      android:shadowRadius="3"
+      android:text="Vakit"
+      android:textColor="#FFFFFF"
+      android:textSize="13sp"
+      android:textStyle="bold" />
+
+    <TextView
+      android:id="@+id/nw_time"
+      android:layout_width="match_parent"
+      android:layout_height="28dp"
+      android:autoSizeMaxTextSize="24sp"
+      android:autoSizeMinTextSize="10sp"
+      android:autoSizeStepGranularity="1sp"
+      android:autoSizeTextType="uniform"
+      android:gravity="center"
+      android:includeFontPadding="false"
+      android:maxLines="1"
+      android:shadowColor="#D9000000"
+      android:shadowDy="1"
+      android:shadowRadius="4"
+      android:text="--:--"
+      android:textColor="#FFFFFF"
+      android:textSize="17sp"
+      android:textStyle="bold" />
+  </LinearLayout>
+</FrameLayout>

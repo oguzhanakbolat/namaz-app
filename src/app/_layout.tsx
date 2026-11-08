@@ -5,12 +5,19 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import { SplashOverlay } from '@/components/SplashOverlay';
+import { UpdateBanner } from '@/components/UpdateBanner';
+
+import { setupAlarmHandler } from '@/lib/alarms';
 import { SettingsProvider, useSettings } from '@/lib/settings';
+import { useBackgroundUpdateCheck } from '@/lib/updates';
 import { useColorMode, useTheme } from '@/theme';
 // Widget arka plan görevi global kapsamda tanımlanmalı
 import { registerWidgetBackgroundTask } from '@/widgets/background';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
+// Uygulama açıkken gelen vakit alarmları da sesli gösterilsin
+setupAlarmHandler();
 
 export default function RootLayout() {
   return (
@@ -32,20 +39,25 @@ function App() {
   // Ayarlar (tema) yüklenmeden açılış ekranı kapanmasın; yoksa bir an yanlış tema görünür
   const ready = fontsReady && settingsLoaded;
 
-  useEffect(() => {
-    if (ready) SplashScreen.hideAsync().catch(() => {});
-  }, [ready]);
+  // Sistem açılış ekranını SplashOverlay kapatır (görsel çizilince); uygulama hazır olunca görsel kaybolur
 
   useEffect(() => {
     registerWidgetBackgroundTask();
   }, []);
 
-  if (!ready) return null;
+  // Uygulama öne geldiğinde güncelleme denetimi (EAS Update)
+  useBackgroundUpdateCheck();
 
   return (
     <>
-      <StatusBar style={mode === 'dark' ? 'light' : 'dark'} />
-      <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: t.background } }} />
+      {ready && (
+        <>
+          <StatusBar style={mode === 'dark' ? 'light' : 'dark'} />
+          <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: t.background } }} />
+          <UpdateBanner />
+        </>
+      )}
+      <SplashOverlay ready={ready} />
     </>
   );
 }

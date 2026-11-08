@@ -13,13 +13,16 @@
     "expo-constants": "~58.0.15",
     "expo-font": "~58.0.11",
     "expo-image": "~58.0.18",
+    "expo-intent-launcher": "~58.0.3",
     "expo-linear-gradient": "~58.0.3",
     "expo-linking": "~58.0.16",
+    "expo-notifications": "~58.1.8",
     "expo-router": "~58.0.30",
     "expo-splash-screen": "~58.0.13",
     "expo-status-bar": "~58.0.4",
     "expo-system-ui": "~58.0.7",
     "expo-task-manager": "~58.0.13",
+    "expo-updates": "~58.0.21",
     "expo-widgets": "~58.0.27",
     "react": "19.3.0",
     "react-dom": "19.3.0",
@@ -44,7 +47,11 @@
     "typecheck": "tsc --noEmit",
     "android:device": "expo run:android --device",
     "ios:device": "expo run:ios --device",
-    "prebuild": "expo prebuild --clean"
+    "prebuild": "expo prebuild --clean",
+    "update:preview": "eas update --channel preview --environment preview",
+    "update:production": "eas update --channel production --environment production",
+    "local:android": "EAS_LOCAL_BUILD_WORKINGDIR=$HOME/.eas-build-local npx eas-cli@latest build --profile production --platform android --local",
+    "local:ios": "EAS_LOCAL_BUILD_WORKINGDIR=$HOME/.eas-build-local npx eas-cli@latest build --profile production --platform ios --local"
   },
   "private": true
 }

@@ -1,5 +1,6 @@
 /**
- * Widget'ları uygulama kapalıyken de güncel tutan arka plan görevi.
+ * Widget'ları ve vakit alarmlarını uygulama kapalıyken de güncel tutan arka plan görevi.
+ *  - Alarmlar: iOS'ta aynı anda en fazla ~60 alarm kurulabildiği için ileri günlerin alarmları buradan eklenir.
  *  - Android: widget'lar kendiliğinden yenilenemediği için asıl güncelleme yolu budur (sistem en sık ~15 dk'da bir çalıştırır).
  *  - iOS: zaman çizelgesi bitmeden (uygulama ~10 gün açılmazsa) yenilemek için; ne zaman çalışacağına sistem karar verir.
  * Görev cihazdaki önbellekten çalışır; internete çıkmaz.
@@ -9,6 +10,7 @@
 import { requireOptionalNativeModule } from 'expo';
 import { Platform } from 'react-native';
 
+import { alarmsAvailable, syncAlarms } from '@/lib/alarms';
 import { loadSettings } from '@/lib/settings';
 import { KEYS, storage, type Cached } from '@/lib/storage';
 import type { DayTimes, SavedLocation } from '@/lib/types';
@@ -31,6 +33,7 @@ export async function refreshWidgetsFromCache() {
   const times = location ? await storage.get<Cached<DayTimes[]>>(KEYS.times(location.cityId)) : null;
   const settings = await loadSettings();
   syncWidgets(times?.data, location?.cityName, settings.widget);
+  await syncAlarms(times?.data, location?.cityName, settings.alarms);
 }
 
 if (TaskManager && BackgroundTask) {
@@ -46,7 +49,7 @@ if (TaskManager && BackgroundTask) {
 
 /** Arka plan görevini kaydeder (birden çok çağrılması sorun değildir) */
 export async function registerWidgetBackgroundTask() {
-  if (!TaskManager || !BackgroundTask || !widgetsAvailable()) return;
+  if (!TaskManager || !BackgroundTask || (!widgetsAvailable() && !alarmsAvailable())) return;
   try {
     const status = await BackgroundTask.getStatusAsync();
     if (status !== BackgroundTask.BackgroundTaskStatus.Available) return;

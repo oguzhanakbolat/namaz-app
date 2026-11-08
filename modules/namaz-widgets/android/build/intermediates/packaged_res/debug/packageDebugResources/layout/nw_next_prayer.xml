@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Sıradaki Vakit (2x2): üstte konum, altta "Akşama", canlı geri sayım ve vaktin saati -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/nw_root"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <ImageView
+    android:id="@+id/nw_bg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scaleType="fitXY"
+    android:src="@drawable/nw_round_20"
+    android:importantForAccessibility="no" />
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="14dp">
+
+    <TextView
+      android:id="@+id/nw_city"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:ellipsize="end"
+      android:maxLines="1"
+      android:text="Namaz Vakti"
+      android:textColor="#D5E4E0"
+      android:textSize="12sp" />
+
+    <FrameLayout
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="1" />
+
+    <TextView
+      android:id="@+id/nw_title"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:ellipsize="end"
+      android:maxLines="2"
+      android:text="@string/nw_empty"
+      android:textColor="#FFFFFF"
+      android:textSize="16sp"
+      android:textStyle="bold" />
+
+    <Chronometer
+      android:id="@+id/nw_timer"
+      android:layout_width="match_parent"
+      android:layout_height="40dp"
+      android:autoSizeMaxTextSize="34sp"
+      android:autoSizeMinTextSize="16sp"
+      android:autoSizeStepGranularity="1sp"
+      android:autoSizeTextType="uniform"
+      android:gravity="start|center_vertical"
+      android:includeFontPadding="false"
+      android:maxLines="1"
+      android:textColor="#F2C66D"
+      android:textSize="28sp"
+      android:textStyle="bold"
+      android:visibility="gone" />
+
+    <TextView
+      android:id="@+id/nw_sub"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:ellipsize="end"
+      android:maxLines="1"
+      android:textColor="#D5E4E0"
+      android:textSize="11sp"
+      android:visibility="gone" />
+  </LinearLayout>
+</FrameLayout>

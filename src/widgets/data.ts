@@ -106,8 +106,9 @@ export function buildPalettes(w: AppSettings['widget'] | undefined): WidgetProps
 const KEYS: PrayerKey[] = ['imsak', 'gunes', 'ogle', 'ikindi', 'aksam', 'yatsi'];
 const FIELDS = ['fajr', 'sunrise', 'dhuhr', 'asr', 'maghrib', 'isha'] as const;
 
-const DATIVE: Record<PrayerKey, string> = {
-  imsak: 'İmsaka',
+/** "Akşama", "Sabaha"... (widget başlığı; Android modülüne de gönderilir) */
+export const DATIVES: Record<PrayerKey, string> = {
+  imsak: 'Sabaha',
   sabah: 'Sabaha',
   gunes: 'Güneşe',
   ogle: 'Öğleye',
@@ -139,7 +140,7 @@ export function propsAt(
     prayers: KEYS.map((k, i) => ({ label: PRAYER_LABELS[k], time: String(day[FIELDS[i]]) })),
     current: KEYS.indexOf(state.current),
     nextLabel: state.nextLabel,
-    nextDative: DATIVE[state.next],
+    nextDative: DATIVES[state.next],
     nextTime: state.nextTime,
     currentStart: state.currentStart,
     nextAt: state.nextAt,

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nw_desc_card">Konum, hicri tarih, sıradaki vakte kalan süre ve tüm vakitler (4x1)</string>
+    <string name="nw_desc_daily">Günün tüm vakitleri, şu anki vakit vurgulu</string>
+    <string name="nw_desc_mini">Şeffaf: yalnızca sıradaki vakit ve saati</string>
+    <string name="nw_desc_next">Sıradaki vakte kalan süre</string>
+    <string name="nw_desc_panel">Sıradaki vakte kalan süre ve günün vakitleri</string>
+    <string name="nw_desc_strip">Tüm vakitler tek satırda, şu anki vakit vurgulu</string>
+    <string name="nw_empty">Konum seçmek için uygulamayı açın</string>
+    <string name="nw_name_card">Vakit Şeridi</string>
+    <string name="nw_name_daily">Günün Vakitleri</string>
+    <string name="nw_name_mini">Sıradaki Vakit (Mini)</string>
+    <string name="nw_name_next">Sıradaki Vakit</string>
+    <string name="nw_name_panel">Vakit Paneli</string>
+    <string name="nw_name_strip">Vakit Şeridi (İnce)</string>
+</resources>

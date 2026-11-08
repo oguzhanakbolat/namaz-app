@@ -14,6 +14,7 @@ import {
   lineLimit,
   minimumScaleFactor,
   monospacedDigit,
+  multilineTextAlignment,
   padding,
 } from '@expo/ui/swift-ui/modifiers';
 import { createWidget, type WidgetEnvironment } from 'expo-widgets';
@@ -50,6 +51,9 @@ const PrayerStrip = (props: WidgetProps, env: WidgetEnvironment) => {
                 foregroundStyle(c.accent),
                 lineLimit(1),
                 minimumScaleFactor(0.7),
+                // Geri sayım metni en geniş hali için yer ayırır ve yazıyı içinde sola dizer;
+                // sağa yaslamak için hem metin hizası hem çerçeve hizası trailing olmalı.
+                multilineTextAlignment('trailing'),
                 frame({ width: 92, alignment: 'trailing' }),
               ]}
             />
